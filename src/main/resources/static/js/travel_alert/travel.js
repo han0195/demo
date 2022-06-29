@@ -1,3 +1,4 @@
+let continent = new Object();
 starttravel(); // 처음시작 함수 호출
 
 
@@ -27,26 +28,37 @@ function gettravel(lv , j){
         async:false,
         data:{"lv":lv},
         success : function (re){
-            division(re);
             htmltravel(re, lv, j);
         }
     });
 }
 
 //분류 함수
-let object;
 function division(re){
+    continent = {};
     for(let i = 0; i < re.data.length; i++){
-        if(re.data[i].continent_nm == let){// 중복된 대륙이라면
-
-        }else{// 중복된 대륙이 아니라면
-
+        let pass = isKeyExists(continent,re.data[i].continent_nm);
+        if(pass){ // 만약 key가 존재하면
+            continent[re.data[i].continent_nm].push(re.data[i].country_nm);
+        }else{// 만약 key가 존재하지않으면
+            continent[re.data[i].continent_nm] = [re.data[i].country_nm];
         }
+        console.log(continent);
+    }
+}
+
+//객체안 key 확인 함수
+function isKeyExists(obj,key){
+    if( obj[key] == undefined ){
+        return false;
+    }else{
+        return true;
     }
 }
 
 //html 출력 함수
 function htmltravel(re, lv, j){
+    division(re);
     let html = "";
     let i = 0;
     for(i = 0 ; i < j ; i++){
