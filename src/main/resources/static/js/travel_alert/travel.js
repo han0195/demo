@@ -1,8 +1,16 @@
 starttravel(); // 처음시작 함수 호출
-let json2;
-let json3;
-let json4;
 
+
+//가로크기 변환되었을때 실행함수
+$(window).resize(function() {
+    if($(window).width() < 767) {
+        $(".title").addClass("rounded");
+        $(".title").css({"border-top": "1px solid #c8c8c8"});
+    }else{
+        $(".title").removeClass("rounded");
+        $(".title").css({"border-top": ""});
+    }
+});
 
 // 처음 json 함수 호출
 function starttravel(){
@@ -19,10 +27,24 @@ function gettravel(lv , j){
         async:false,
         data:{"lv":lv},
         success : function (re){
+            division(re);
             htmltravel(re, lv, j);
         }
     });
 }
+
+//분류 함수
+let object;
+function division(re){
+    for(let i = 0; i < re.data.length; i++){
+        if(re.data[i].continent_nm == let){// 중복된 대륙이라면
+
+        }else{// 중복된 대륙이 아니라면
+
+        }
+    }
+}
+
 //html 출력 함수
 function htmltravel(re, lv, j){
     let html = "";
