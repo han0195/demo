@@ -56,16 +56,22 @@ function isKeyExists(obj,key){
     }
 }
 
-//html 출력 함수
+//html 대륙 출력 함수
 function htmltravel(re, lv, j){
     division(re);
     let html = "";
     let i = 0;
-    for(i = 0 ; i < j ; i++){
+/*    for(i = 0 ; i < j ; i++){
         if(re.data[i] != null){
             html += '<li>'+re.data[i].country_nm+'</li>';
         }
+    }*/
+    //출력
+    for(i = 0; i < Object.keys(continent).length ; i++){
+        console.log(Object.keys(continent)[0]);
+        html += '<li>'+Object.keys(continent)[i]+'<ul id="'+Object.keys(continent)[i]+'"></ul></li>';
     }
+
     console.log(re);
     if(i < re.data.length){//출력된 나라가 전체데이터보다 작을때
         html += '<li><a onclick="getalldata('+lv+','+re.data.length+')" href="#">...더보기</a></li>';
@@ -80,7 +86,17 @@ function htmltravel(re, lv, j){
     }else{// 4단계 json 이라면
         $("#prohibition").html(html);
     }
+    htmltravelin();
 }
 function getalldata(lv, j){
     gettravel(lv,j);
+}
+// html 나라 출력 함수
+function htmltravelin(){
+    //출력
+    for(let i = 0; i < Object.keys(continent).length ; i++){
+        for(let j = 0; j < continent[Object.keys(continent)[i]].lenght; j++){
+            console.log(j);
+        }
+    }
 }
