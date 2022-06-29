@@ -1,4 +1,8 @@
 starttravel(); // 처음시작 함수 호출
+let json2;
+let json3;
+let json4;
+
 
 // 처음 json 함수 호출
 function starttravel(){
@@ -31,6 +35,8 @@ function htmltravel(re, lv, j){
     console.log(re);
     if(i < re.data.length){//출력된 나라가 전체데이터보다 작을때
         html += '<li><a onclick="getalldata('+lv+','+re.data.length+')" href="#">...더보기</a></li>';
+    }else if(i == re.data.length){// 출력된 나라가 전체데이터양이랑 같을때
+        html += '<li><a onclick="getalldata('+lv+', 20)" href="#">...간소화</a></li>';
     }
     // html 추가
     if(lv == 2){ // 2단계 json이라면
