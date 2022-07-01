@@ -19,11 +19,11 @@ public class TravelAlertController {
     TravelAlertService travelAlertService;
 
     @GetMapping("/gettravel")
-    public void getTravelAlert(HttpServletResponse response, @RequestParam("lv") int lv){
+    public void getTravelAlert(HttpServletResponse response){
         try {
             response.setCharacterEncoding("UTF-8");
             response.setContentType("application/json");
-            response.getWriter().print(travelAlertService.getTravelAlert(lv));
+            response.getWriter().print(travelAlertService.getTravelAlert());
         }catch (Exception e){
             System.out.println("JSON 읽어오기 컨트롤에러: " + e);
         }
